@@ -13,7 +13,7 @@ function draw() {
   ellipse(100, 100, 200, 200);
   */
     fill(value);
-    ellipse(25, 25, 50, 50);
+    ellipse(25, 25, 51, 50);
   }
 
   function mouseClicked() {
