@@ -32,14 +32,14 @@ function draw() {
     stroke(0)
     fill(255)
     rectMode(CENTER)
-    rect(730, 160, 22, 35)
+    rect(windowWidth/2+10, 160, 22, 35)
     noStroke()
 
     textSize(25)
     fill(0)
     text("Sorting " + sequence.length + " digits", windowWidth/2, 170)
 
-    if(mouseX>719 && mouseX<741 && mouseY>143 && mouseY<178)
+    if(mouseX>windowWidth/2-1 && mouseX<windowWidth/2+21 && mouseY>143 && mouseY<178)
     {
       isOverNumber = true;
     } else {
