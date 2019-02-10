@@ -14,14 +14,14 @@ let value = 0;
 var numSorts = 0;
 
 function draw() {
-  textFont('Calibri')
+  //textFont('Calibri')
 
 
     console.log(sequence);
     background(backgroundColor);
     //stroke(0)
     //strokeWeight(3)
-    textSize(100);
+    textSize(80);
     fill(14, 77, 146);
     let s = "BOGOSORT";
     textAlign(CENTER)
@@ -35,7 +35,7 @@ function draw() {
     rect(730, 160, 22, 35)
     noStroke()
 
-    textSize(30)
+    textSize(25)
     fill(0)
     text("Sorting " + sequence.length + " digits", windowWidth/2, 170)
 
@@ -56,20 +56,20 @@ function draw() {
 
     if(isOverButton == true)
     {
-      fill(180, 220, 240);
+      fill(0, 128, 255);
       cursor(HAND);
     } else {
-      fill(170, 210, 230);
+      fill(14, 77, 146);
       cursor(ARROW);
     }
     rectMode(CENTER)
-    stroke(10)
+    stroke(255)
     strokeWeight(1)
     rect(windowWidth/2, 560, 400, 100);
     noStroke()
 
     textSize(70);
-    fill(0);
+    fill(255);
     if (checkSorted(sequence))
     {
       result = "SORTED!"
