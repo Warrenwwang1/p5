@@ -29,6 +29,7 @@ function draw() {
     strokeWeight(1)
 
     //clickable num of sequence button
+    stroke(0)
     fill(255)
     rectMode(CENTER)
     rect(730, 160, 22, 35)
