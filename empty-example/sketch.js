@@ -12,9 +12,19 @@ var sequence = new Array(Math.floor(Math.random()*10), Math.floor(Math.random()*
 var len = sequence.length
 let value = 0;
 var numSorts = 0;
+var timeElapsed = 10;
+var lastPress = 0;
 
 function draw() {
   //textFont('Calibri')
+  var clickspeed
+    if (timeElapsed < 1)
+    {
+      clickspeed = 1/timeElapsed
+    }
+    else{
+      clickspeed = 0.0
+    }
 
 
     console.log(sequence);
@@ -47,7 +57,7 @@ function draw() {
     }
 
     //making clickable 'sort!' button
-    if(mouseX>(windowWidth/2 - 200) && mouseX<(windowWidth/2 + 200) && mouseY>510 && mouseY<610)
+    if(mouseX>(windowWidth/2 - 200) && mouseX<(windowWidth/2 + 200) && mouseY>510 && mouseY<610 && !checkSorted(sequence))
     {
       isOverButton = true;
     } else {
@@ -83,10 +93,21 @@ function draw() {
     //image(img, windowWidth/2 - 100, 580, 20, 20)
 
     //stepcounter
+    fill(255)
+    stroke(0)
+    rectMode(CORNER)
+    rect(10, 10, 320, 70)
+
+    noStroke()
     textAlign(LEFT)
-    textSize(30)
+    textSize(25)
     fill(40)
     text("Steps: "+ numSorts, 20, 40)
+    text("Click Speed: "+ round(clickspeed*100)/100 + " clicks/s", 20, 70)
+    if(clickspeed > 6)
+    {
+      text("wow you are clicking fast!", 20, 110)
+    }
     textAlign(CENTER)
 
 
@@ -110,16 +131,6 @@ function draw() {
     if (checkSorted(sequence))
     {
       noLoop();
-
-      /*if (numSorts != 1)
-      {
-        result = "S"
-      }
-      else{
-        var msg = "That took "+ numSorts +" step to sort!"
-      }
-      textSize(20)
-      text(msg, windowWidth/2, 480)*/
     }
 
     //END OF DRAW
@@ -183,6 +194,9 @@ function sequenceChanger(sequence)
   if(isOverButton == true)
   {
     //backgroundColor = color(random(160, 180), random(200, 220), random(220, 240));
+    console.log(timeElapsed)
+    timeElapsed = round((millis()/1000)*100)/100 - lastPress
+    lastPress = round((millis()/1000) * 100)/100
     numSorts ++;
     sequence = shuffle(sequence)
 
